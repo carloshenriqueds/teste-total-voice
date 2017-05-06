@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "require": {
+        "sonata-project/user-bundle": "^3.2"
+    }
+}
