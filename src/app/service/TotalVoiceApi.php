@@ -8,6 +8,14 @@ class TotalVoiceApi{
 	private $host;
 	private $requestHttp;
 
+
+	public function __construct($token=null, $method=null, $requestApi=null, $host=null) {
+		$this->token = $token;
+		$this->method = $method;
+		$this->requestApi = $requestApi;
+		$this->host = $host;
+	}
+
 	public function setToken($token){
 		$this->token = $token;
 	}
@@ -26,6 +34,22 @@ class TotalVoiceApi{
 
 	public function setRequestHttp($requestHttp){
 		$this->requestHttp = $requestHttp;
+	}
+
+	public function getToken(){
+		return $this->token;
+	}
+
+	public function getMethod(){
+		return $this->method;
+	}
+
+	public function getRequestApi(){
+		return $this->requestApi;
+	}
+
+	public function getHost(){
+		return $this->host;
 	}
 
 	/**
@@ -69,13 +93,13 @@ class TotalVoiceApi{
 	 * @throws Exception
 	 */
 	public function sendRequestApi(){
-		$resultado = null;
+		$resultado = array();
 		try{
 			$this->openSocket();
 			$this->buildRequestApi();
 			fwrite($this->fpSocket, $this->requestHttp);
 			while (!feof($this->fpSocket)) {
-				$resultado .= fgets($this->fpSocket, 128);;
+				array_push($resultado, fgets($this->fpSocket, 128));
 			}
 			$this->closeSocket();
 			return $resultado;

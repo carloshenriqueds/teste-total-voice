@@ -1,6 +1,6 @@
 <?php 
-ini_set('display_errors','Off');
-require_once "model/TotalVoiceApiModel.php";
+ini_set('display_errors','On');
+require_once "service/TotalVoiceApi.php";
 
 $api = new TotalVoiceApi();
 $api->setToken("f1acf1095d5d2af0f7068c0798539a74");
