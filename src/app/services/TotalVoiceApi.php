@@ -28,13 +28,25 @@ class TotalVoiceApi{
 		$this->requestHttp = $requestHttp;
 	}
 
+	/**
+	 * * Função que cria conexão via socket.
+	 * @access private
+	 * @return void
+	 * @throws Exception
+	 */
 	private function openSocket(){
 		$this->fpSocket = fsockopen($this->host, 80, $errno, $errstr, 30);
 		if(!$this->fpSocket){
 			throw new Exception ("Erro ao abrir o socket.");
 		}
 	}
-
+	
+	/**
+	 * * Função que fecha conexão via socket.
+	 * @access private
+	 * @return void
+	 * @throws Exception
+	 */
 	private function closeSocket(){
 		if(!$this->fpSocket){
 			throw new Exception("Erro ao fechar o socket");
@@ -50,6 +62,12 @@ class TotalVoiceApi{
 		$this->setRequestHttp($out);
 	}
 
+	/**
+	 * * Função monta e envia o request de API
+	 * @access public
+	 * @return Array retorno da API
+	 * @throws Exception
+	 */
 	public function sendRequestApi(){
 		$resultado = null;
 		try{
