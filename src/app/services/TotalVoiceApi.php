@@ -1,6 +1,6 @@
 <?php
 
-class TotalVoiceApiModel {
+class TotalVoiceApi{
 	private $fpSocket;
 	private $token;
 	private $method;
